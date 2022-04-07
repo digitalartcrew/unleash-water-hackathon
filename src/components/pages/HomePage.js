@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import Form from "react-bootstrap/Form";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { AiTwotoneAlert } from "react-icons/ai";
 
@@ -19,28 +20,28 @@ const alarmDataObjects = [
       {
         id: 1,
         equipmentId: 1,
-        command: "some command",
+        command: "clean station",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 2,
         equipmentId: 2,
-        command: "some command",
+        command: "reset systems",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 3,
         equipmentId: 3,
-        command: "some command",
+        command: "add chemicals",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 4,
         equipmentId: 4,
-        command: "some command",
+        command: "replace engines",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
@@ -56,28 +57,28 @@ const alarmDataObjects = [
       {
         id: 1,
         equipmentId: 1,
-        command: "some command",
+        command: "clean station",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 2,
         equipmentId: 2,
-        command: "some command",
+        command: "reset systems",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 3,
         equipmentId: 3,
-        command: "some command",
+        command: "add chemicals",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 4,
         equipmentId: 4,
-        command: "some command",
+        command: "replace engines",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
@@ -93,28 +94,28 @@ const alarmDataObjects = [
       {
         id: 1,
         equipmentId: 1,
-        command: "some command",
+        command: "clean station",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 2,
         equipmentId: 2,
-        command: "some command",
+        command: "reset systems",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 3,
         equipmentId: 3,
-        command: "some command",
+        command: "add chemicals",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 4,
         equipmentId: 4,
-        command: "some command",
+        command: "replace engines",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
@@ -130,28 +131,28 @@ const alarmDataObjects = [
       {
         id: 1,
         equipmentId: 1,
-        command: "some command",
+        command: "clean station",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 2,
         equipmentId: 2,
-        command: "some command",
+        command: "reset systems",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 3,
         equipmentId: 3,
-        command: "some command",
+        command: "add chemicals",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 4,
         equipmentId: 4,
-        command: "some command",
+        command: "replace engines",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
@@ -167,28 +168,28 @@ const alarmDataObjects = [
       {
         id: 1,
         equipmentId: 1,
-        command: "some command",
+        command: "clean station",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 2,
         equipmentId: 2,
-        command: "some command",
+        command: "reset systems",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 3,
         equipmentId: 3,
-        command: "some command",
+        command: "add chemicals",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
       {
         id: 4,
         equipmentId: 4,
-        command: "some command",
+        command: "replace engines",
         timestamp: "some time stamp",
         userId: "id of init operator",
       },
@@ -233,7 +234,11 @@ export const HomePage = () => {
             </Accordion.Header>
             <Accordion.Body>
               {el.actions.map((el, ind) => (
-                <div>{el.command}</div>
+                <Form>
+                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                    <Form.Check type="checkbox" label={el.command} />
+                  </Form.Group>
+                </Form>
               ))}
               <Card border="primary" style={{ width: "18rem" }}>
                 <Card.Header>Model Confidence</Card.Header>
