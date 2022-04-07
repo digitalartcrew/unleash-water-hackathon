@@ -208,7 +208,7 @@ export const HomePage = () => {
     <div>
       <Accordion>
         {alarms?.map((el, ind) => (
-          <Accordion.Item eventKey={ind}>
+          <Accordion.Item eventKey={ind} key={ind}>
             <Accordion.Header>
               <Row>
                 <Col
@@ -234,7 +234,7 @@ export const HomePage = () => {
             </Accordion.Header>
             <Accordion.Body>
               {el.actions.map((el, ind) => (
-                <Form>
+                <Form key={ind}>
                   <Form.Group className="mb-3" controlId="formBasicCheckbox">
                     <Form.Check type="checkbox" label={el.command} />
                   </Form.Group>
@@ -246,14 +246,12 @@ export const HomePage = () => {
                   <Card.Title>77%</Card.Title>
                   <Card.Text>
                     SME Input
-                    <div>
-                      <Button variant="primary" size="sm">
-                        Confirm
-                      </Button>{" "}
-                      <Button variant="secondary" size="sm">
-                        Reject
-                      </Button>
-                    </div>
+                    <Button variant="primary" size="sm">
+                      Confirm
+                    </Button>{" "}
+                    <Button variant="secondary" size="sm">
+                      Reject
+                    </Button>
                   </Card.Text>
                 </Card.Body>
               </Card>
