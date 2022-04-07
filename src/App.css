@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.accordion-item button {
+  padding: 0px;
+  background: gray;
+}
+
+.accordion-item .col {
+  padding: 16px 0px;
+  padding-left: 10px;
+}
+
+.accordion-item .row {
+  width: 100%;
+}
