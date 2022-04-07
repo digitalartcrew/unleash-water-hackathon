@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/unleash-water-hackathon/static/css/main.f04d2b99.css",
+    "main.js": "/unleash-water-hackathon/static/js/main.e60c1b8d.js",
+    "static/js/787.9893197f.chunk.js": "/unleash-water-hackathon/static/js/787.9893197f.chunk.js",
+    "index.html": "/unleash-water-hackathon/index.html",
+    "main.f04d2b99.css.map": "/unleash-water-hackathon/static/css/main.f04d2b99.css.map",
+    "main.e60c1b8d.js.map": "/unleash-water-hackathon/static/js/main.e60c1b8d.js.map",
+    "787.9893197f.chunk.js.map": "/unleash-water-hackathon/static/js/787.9893197f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f04d2b99.css",
+    "static/js/main.e60c1b8d.js"
+  ]
+}
