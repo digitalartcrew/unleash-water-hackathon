@@ -1,12 +1,9 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { HomePage } from "./components/pages/HomePage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { PlumbersPage } from "./components/pages/plumbersPage";
-import { LeadPage } from "./components/pages/leadPage";
 
 import reportWebVitals from "./reportWebVitals";
 
@@ -18,8 +15,6 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
-        <Route path="/lead" element={<LeadPage />} />
-        <Route path="/plumbers" element={<PlumbersPage />} />
       </Route>
     </Routes>
   </Router>

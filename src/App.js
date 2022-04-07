@@ -10,12 +10,6 @@ function App() {
         <Nav.Item>
           <Nav.Link href="/">Home</Nav.Link>
         </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/lead">Lead Service Search</Nav.Link>
-        </Nav.Item>
-        <Nav.Item>
-          <Nav.Link href="/plumbers">Plumber Direction</Nav.Link>
-        </Nav.Item>
       </Nav>
       <div className="content">
         <Outlet />
