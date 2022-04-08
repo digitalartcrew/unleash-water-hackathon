@@ -1,199 +1,46 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Accordion from "react-bootstrap/Accordion";
 import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
-import { BsFillCheckCircleFill } from "react-icons/bs";
-import { AiTwotoneAlert } from "react-icons/ai";
 
 const alarmDataObjects = [
   {
-    id: 1,
-    description: "COMMUNICATION FAILURE 1",
-    startTime: new Date(),
-    endTime: new Date(),
-    priority: 1,
-    actions: [
+    alarmType: 1,
+    alarmDescription: "Tank A Level High Alarm",
+    recommendedActions: [
       {
-        id: 1,
-        equipmentId: 1,
-        command: "clean station",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
+        tagName: "Tank 1 Flow Control Valve Manual Command",
+        command: 1,
       },
       {
-        id: 2,
-        equipmentId: 2,
-        command: "reset systems",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
+        tagName: "Tank 1 Flow Control Valve Position Command",
+        command: 100,
       },
       {
-        id: 3,
-        equipmentId: 3,
-        command: "add chemicals",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 4,
-        equipmentId: 4,
-        command: "replace engines",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
+        tagName: "Filtered Water Effluent Valve Position Command",
+        command: 0,
       },
     ],
+    confidence: 0.8,
   },
   {
-    id: 2,
-    description: "COMMUNICATION FAILURE 2",
-    startTime: new Date(),
-    endTime: new Date(),
-    priority: 1,
-    actions: [
+    alarmType: 2,
+    alarmDescription: "Flowrate 1A High Alarm",
+    recommendedActions: [
       {
-        id: 1,
-        equipmentId: 1,
-        command: "clean station",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
+        tagName: "Filtered Water Effluent Valve Position Command",
+        command: 0,
       },
       {
-        id: 2,
-        equipmentId: 2,
-        command: "reset systems",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 3,
-        equipmentId: 3,
-        command: "add chemicals",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 4,
-        equipmentId: 4,
-        command: "replace engines",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
+        tagName: "Skim Train 2 Auto Command",
+        command: 1,
       },
     ],
-  },
-  {
-    id: 3,
-    description: "COMMUNICATION FAILURE 3",
-    startTime: new Date(),
-    endTime: new Date(),
-    priority: 1,
-    actions: [
-      {
-        id: 1,
-        equipmentId: 1,
-        command: "clean station",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 2,
-        equipmentId: 2,
-        command: "reset systems",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 3,
-        equipmentId: 3,
-        command: "add chemicals",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 4,
-        equipmentId: 4,
-        command: "replace engines",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-    ],
-  },
-  {
-    id: 4,
-    description: "COMMUNICATION FAILURE 4",
-    startTime: new Date(),
-    endTime: new Date(),
-    priority: 1,
-    actions: [
-      {
-        id: 1,
-        equipmentId: 1,
-        command: "clean station",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 2,
-        equipmentId: 2,
-        command: "reset systems",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 3,
-        equipmentId: 3,
-        command: "add chemicals",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 4,
-        equipmentId: 4,
-        command: "replace engines",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-    ],
-  },
-  {
-    id: 5,
-    description: "COMMUNICATION FAILURE 5",
-    startTime: new Date(),
-    endTime: new Date(),
-    priority: 1,
-    actions: [
-      {
-        id: 1,
-        equipmentId: 1,
-        command: "clean station",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 2,
-        equipmentId: 2,
-        command: "reset systems",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 3,
-        equipmentId: 3,
-        command: "add chemicals",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-      {
-        id: 4,
-        equipmentId: 4,
-        command: "replace engines",
-        timestamp: "some time stamp",
-        userId: "id of init operator",
-      },
-    ],
+    confidence: 0.95,
   },
 ];
 
@@ -205,60 +52,49 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div>
-      <Accordion>
-        {alarms?.map((el, ind) => (
-          <Accordion.Item eventKey={ind} key={ind}>
-            <Accordion.Header>
-              <Row>
-                <Col
-                  className="message"
-                  style={{ backgroundColor: "black", color: "red" }}
-                >
-                  {el.description}
-                </Col>
-                <Col
-                  className="status"
-                  style={{ backgroundColor: "blue", color: "yellow" }}
-                >
-                  Fault <AiTwotoneAlert style={{ color: "red" }} />
-                </Col>
-                <Col
-                  className="date"
-                  style={{ backgroundColor: "gray", color: "yellow" }}
-                >
-                  Ack All Alarms{" "}
-                  <BsFillCheckCircleFill style={{ color: "green" }} />
-                </Col>
-              </Row>
-            </Accordion.Header>
-            <Accordion.Body>
-              {el.actions.map((el, ind) => (
-                <Form key={ind}>
-                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label={el.command} />
-                  </Form.Group>
-                </Form>
-              ))}
-              <Card border="primary" style={{ width: "18rem" }}>
-                <Card.Header>Model Confidence</Card.Header>
-                <Card.Body>
-                  <Card.Title>77%</Card.Title>
-                  <Card.Text>
-                    SME Input
-                    <Button variant="primary" size="sm">
-                      Confirm
-                    </Button>{" "}
-                    <Button variant="secondary" size="sm">
-                      Reject
-                    </Button>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Accordion.Body>
-          </Accordion.Item>
-        ))}
-      </Accordion>
-    </div>
+    <Container>
+      <header>
+        <h1>Alarm Response Validator</h1>
+        <p>
+          Confirm to accept the set of actions as complete and correct. Reject
+          to confirm checked actions and discard unchecked items.
+        </p>
+      </header>
+      {alarms?.map((el, ind) => (
+        <Row className="alarms__row">
+          <Col>
+            <Card className="alarms__actions-cards">
+              <Card.Body>
+                <Card.Title>{el.alarmDescription}</Card.Title>
+                <Card.Text>
+                  {el.recommendedActions.map((el, ind) => (
+                    <Form key={ind}>
+                      <Form.Group
+                        className="mb-3"
+                        controlId="formBasicCheckbox"
+                      >
+                        <Form.Check
+                          type="checkbox"
+                          label={el.tagName + " to " + el.command}
+                        />
+                      </Form.Group>
+                    </Form>
+                  ))}
+                </Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col>
+            <Card>
+              <Card.Body>
+                <Card.Title> Confidence Score: {el.confidence}</Card.Title>
+                <Card.Link href="#">Confirm</Card.Link>
+                <Card.Link href="#">Reject</Card.Link>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      ))}
+    </Container>
   );
 };

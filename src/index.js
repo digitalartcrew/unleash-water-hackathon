@@ -3,6 +3,8 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { HomePage } from "./components/pages/HomePage";
+import { DashboardPage } from "./components/pages/DashboardPage";
+import { HistoryPage } from "./components/pages/HistoryPage";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import reportWebVitals from "./reportWebVitals";
@@ -15,6 +17,8 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
+        <Route path="/history" element={<HistoryPage />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
       </Route>
     </Routes>
   </Router>
