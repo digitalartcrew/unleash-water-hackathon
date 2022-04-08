@@ -62,3 +62,11 @@
 .alarms__actions-cards {
   border: none !important;
 }
+
+.red-text {
+  color: red;
+}
+
+.green-text {
+  color: green;
+}
