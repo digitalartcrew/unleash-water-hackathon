@@ -1,11 +1,9 @@
-// const authRoutes = require("../routes/authRoutes");
-// const recipeRoutes = require("../routes/recipeRoutes");
-// const userRoutes = require("../routes/userRoutes");
+const authRoutes = require("../routes/authRoutes");
+const alarmRoutes = require("../routes/alarmRoutes");
 
-// const routes = {
-// 	authRoutes,
-// 	recipeRoutes,
-// 	userRoutes,
-// };
+const routes = {
+  authRoutes,
+  alarmRoutes,
+};
 
-// module.exports = routes;
+module.exports = routes;

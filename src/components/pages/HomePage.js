@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
+import Modal from "react-bootstrap/Modal";
 
 const alarmDataObjects = [
   {
@@ -26,6 +27,7 @@ const alarmDataObjects = [
       },
     ],
     confidence: 0.8,
+    confirmed: true,
   },
   {
     alarmType: 2,
@@ -41,11 +43,17 @@ const alarmDataObjects = [
       },
     ],
     confidence: 0.95,
+    confirmed: true,
   },
 ];
 
 export const HomePage = () => {
   const [alarms, setAlarms] = useState();
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   useEffect(() => {
     setAlarms(alarmDataObjects);
@@ -88,11 +96,40 @@ export const HomePage = () => {
             <Card>
               <Card.Body>
                 <Card.Title> Confidence Score: {el.confidence}</Card.Title>
-                <Card.Link href="#">Confirm</Card.Link>
-                <Card.Link href="#">Reject</Card.Link>
+                <Card.Link href="#" onClick={handleShow}>
+                  Confirm
+                </Card.Link>
+                <Card.Link href="#" onClick={handleShow}>
+                  Reject
+                </Card.Link>
               </Card.Body>
             </Card>
           </Col>
+          <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+              <Modal.Title>
+                {el.confirmed
+                  ? "Are you sure you want to confirm?"
+                  : "Are you sure you want to reject"}
+              </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              Additional notes to resolving this issue:
+              <Form>
+                <Form.Group className="mb-3" controlId="formAlarmNotes">
+                  <Form.Control
+                    type="textarea"
+                    label="Add notes here to improve our system performance."
+                  />
+                </Form.Group>
+              </Form>
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" onClick={handleClose}>
+                {el.confirmed ? "Confirm" : "Reject"}
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </Row>
       ))}
     </Container>
